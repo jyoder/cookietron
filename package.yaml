@@ -37,6 +37,7 @@ executables:
     - -Werror
     dependencies:
     - cookietron
+    - servant-server
 
 tests:
   cookietron-test:
