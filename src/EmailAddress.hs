@@ -6,6 +6,7 @@ module EmailAddress
   )
 where
 
+import Control.Monad.Fail (fail)
 import Data.Aeson (FromJSON, ToJSON, Value (String), parseJSON, toJSON, withText)
 import Data.Maybe (fromJust)
 import qualified Data.Text.Encoding
@@ -40,7 +41,7 @@ instance FromJSON EmailAddress where
   parseJSON = withText "EmailAddress" $ \text ->
     case fromText text of
       Just emailAddress -> return emailAddress
-      Nothing -> empty
+      Nothing -> fail "malformed email address"
 
 instance ToJSON EmailAddress where
   toJSON (EmailAddress emailAddress) = String $ toText $ EmailAddress emailAddress
