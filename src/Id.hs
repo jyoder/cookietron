@@ -5,10 +5,9 @@ import qualified Data.ByteString.Base64 as Base64
 import qualified Data.ByteString.Lazy as Lazy
 import qualified Data.Text.Encoding as Text
 import qualified Data.UUID as Uuid
-import Data.UUID (UUID)
 import Protolude
 
-newtype Id a = Id UUID deriving (Eq, Show, Generic)
+newtype Id a = Id Uuid.UUID deriving (Eq, Show, Generic)
 
 fromText :: Text -> Maybe (Id a)
 fromText text = do
