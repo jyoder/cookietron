@@ -26,11 +26,11 @@ toText (Id uuid) =
 nil :: Id a
 nil = Id Uuid.nil
 
-instance ToJSON (Id a) where
-  toJSON id = String $ toText id
-
 instance FromJSON (Id a) where
   parseJSON = withText "Id" $ \text ->
     case fromText text of
       Just id -> return id
       Nothing -> fail "malformed base64-encoded uuid"
+
+instance ToJSON (Id a) where
+  toJSON id = String $ toText id
