@@ -1,7 +1,7 @@
 module UserApi (Api, server) where
 
 import qualified EmailAddress (example)
-import Id (Id (..))
+import Id (nil)
 import Protolude
 import Servant
 import User (User (..))
@@ -21,4 +21,4 @@ getUserById 0 = return userExample
 getUserById _ = throwError err404
 
 userExample :: User
-userExample = User {id = Id 0, emailAddress = EmailAddress.example}
+userExample = User {id = nil, emailAddress = EmailAddress.example}

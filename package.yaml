@@ -40,6 +40,8 @@ dependencies:
 - email-validate
 - protolude
 - text
+- uuid
+- base64-bytestring
 
 ghc-options:
 - -Wall
